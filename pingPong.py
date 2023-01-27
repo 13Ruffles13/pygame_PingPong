@@ -1,7 +1,7 @@
 import pygame, sys
 import random
 
-#Physics
+# Functions
 def ball_animation():
     global ball_speed_x, ball_speed_y
     
@@ -40,24 +40,27 @@ def ball_restart():
     ball_speed_y *= random.choice((1,-1))
     ball_speed_x *= random.choice((1,-1))
 
+# General window
 pygame.init()
 clock = pygame.time.Clock()
 
-#Main window
+# Main Window GUI
 screen_width = 1280
 screen_height = 960
 screen = pygame.display.set_mode((screen_width,screen_height))
 pygame.display.set_caption('Pong')
 
-# Game Shapes
+# Colors
+bg_color = pygame.Color('grey12')
+light_grey = (200,200,200)
+
+# Game Rectangles
 ball = pygame.Rect(screen_width/2 - 15, screen_height/2 - 15,30,30) #Middle of the screen
 player = pygame.Rect(screen_width - 20, screen_height/2 - 70, 10, 140)
 opp = pygame.Rect(10, screen_height/2 - 70, 10, 140)
 
-bg_color = pygame.Color('grey12')
-light_grey = (200,200,200)
 
-#Movement
+# Game vars.
 ball_speed_x = 7 * random.choice((1,-1))
 ball_speed_y = 7 * random.choice((1,-1))
 player_speed = 0
