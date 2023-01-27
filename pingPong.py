@@ -66,6 +66,13 @@ ball_speed_y = 7 * random.choice((1,-1))
 player_speed = 0
 opp_speed = 7
 
+# Game scoreboard vars.
+player_score = 0
+opp_score = 0
+game_font = pygame.font.Font("freesansbold.ttf", 32)
+
+
+# Frames & events
 while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -82,18 +89,21 @@ while True:
             if event.key == pygame.K_UP:
                 player_speed += 7
                 
-    
+    # Game Funcs. 
     ball_animation()
     player_animation()
     opp_AI()
     
-    #Visuals
+    # Visuals
     screen.fill(bg_color)
     pygame.draw.rect(screen,light_grey, player)
     pygame.draw.rect(screen,light_grey, opp)
     pygame.draw.ellipse(screen, light_grey, ball)
     pygame.draw.aaline(screen, light_grey, (screen_width/2, 0), (screen_width/2, screen_height))
     
-    #Update window
+    # Text must be above background!
+    player_text = game_font.render(f"{player_score}", False, light_grey)
+    
+    # Update window
     pygame.display.flip()
     clock.tick(60) #Frames per-second
